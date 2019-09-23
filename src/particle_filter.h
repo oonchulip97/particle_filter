@@ -113,13 +113,19 @@ class ParticleFilter {
 
  private:
   // Number of particles to draw
-  int num_particles; 
+  size_t num_particles; 
   
   // Flag, if filter is initialized
   bool is_initialized;
   
   // Vector of weights of all particles
   std::vector<double> weights; 
+
+  /**
+   * Calculate multivariate-Gaussian probability density
+   */
+  double multiv_prob(double sig_x, double sig_y, double x_obs, double y_obs,
+                     double mu_x, double mu_y);
 };
 
 #endif  // PARTICLE_FILTER_H_
